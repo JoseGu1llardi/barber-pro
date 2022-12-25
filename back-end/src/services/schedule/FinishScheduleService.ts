@@ -11,8 +11,6 @@ export class FinishScheduleService {
       throw new Error("Error");
     }
     
-    console.log(schedule_id, user_id);
-
     try {
       const belongsToUser = await prismaClient.service.findFirst({
         where: {
