@@ -1,4 +1,6 @@
-import Head from "next/head";
+import Head from 'next/head';
+
+import { Flex, Text } from '@chakra-ui/react';
 
 export default function Home() {
   return (
@@ -6,7 +8,9 @@ export default function Home() {
       <Head>
         <title>Barber Pro - Your complete system</title>
       </Head>
-      <h1>Project test</h1>
+      <Flex background="barber.900" height='100vh'>
+        <Text color='#fff'>Hello</Text>
+      </Flex>
     </>
   )
 }
