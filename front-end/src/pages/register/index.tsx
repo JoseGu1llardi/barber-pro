@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 
 import Head from 'next/head';
 import Image from 'next/image';
@@ -14,22 +14,15 @@ import {
 
 import logoImg from '../../../public/images/logo.svg';
 
-import { AuthContext } from '../../contexts/AuthContext';
-
-export default function Login() {
-    const { signIn } = useContext(AuthContext);
-
+export default function Register() {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    async function handleLogin() {
-        await signIn({ email, password });
-    }
 
     return (
         <>
             <Head>
-                <title>Barber Pro - Log in</title>
+                <title>Create your account</title>
             </Head>
             <Flex background="barber.900" height='100vh' alignItems='center' justifyContent='center'>
                 <Flex width={640} direction='column' p={14} rounded={8}>
@@ -41,6 +34,18 @@ export default function Login() {
                             alt='Logo Barber Pro'
                         />
                     </Center>
+
+                    <Input
+                        background='barber.400'
+                        color='white'
+                        variant='filled'
+                        size='lg'
+                        placeholder='Your company name'
+                        type='text'
+                        mb={3}
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                    />
 
                     <Input
                         background='barber.400'
@@ -72,14 +77,13 @@ export default function Login() {
                         mb={6}
                         size='lg'
                         _hover={{ bg: '#FFB13E' }}
-                        onClick={handleLogin}
                     >
-                        Log in
+                        Register
                     </Button>
 
                     <Center color='white' mt={2}>
-                        <Link href='/register'>
-                            <Text>Do not have an account yet? <strong>Register</strong></Text>
+                        <Link href='/login'>
+                            <Text>Does you already have an account? <strong>Login</strong></Text>
                         </Link>
                     </Center>
 

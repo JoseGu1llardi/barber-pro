@@ -9,7 +9,6 @@ export default function Home() {
         <title>Barber Pro - Your complete system</title>
       </Head>
       <Flex background="barber.900" height='100vh'>
-        <Text color='#fff'>Hello</Text>
       </Flex>
     </>
   )
