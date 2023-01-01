@@ -2,7 +2,7 @@ import { createContext, ReactNode, useState } from 'react';
 
 import Router from 'next/router';
 
-import { destroyCookie, setCookie } from 'nookies';
+import { destroyCookie } from 'nookies';
 
 import { api } from '../services/apiClient';
 
@@ -55,29 +55,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     async function signIn({ email, password }: SignInProps) {
         try {
-            const response = await api.post("/session", {
-                email,
-                password
-            });
-
-            const { id, name, token, subscriptions, address } = response.data;
-
-            setCookie(undefined, '@barber.token', token, {
-                maxAge: 60 * 60 * 24 * 30,
-                path: '/'
-            });
-
-            setUser({
-                id,
-                name,
-                email,
-                address,
-                subscriptions
-            });
-
-            api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
-            Router.push('/dashboard');
 
         } catch (err) {
             console.log("Error when logging!", err);

@@ -62,22 +62,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
             const { id, name, token, subscriptions, address } = response.data;
 
-            setCookie(undefined, '@barber.token', token, {
-                maxAge: 60 * 60 * 24 * 30,
-                path: '/'
-            });
-
-            setUser({
-                id,
-                name,
-                email,
-                address,
-                subscriptions
-            });
-
-            api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
-            Router.push('/dashboard');
+            setCookie(undefined, '@barber.token', token);
 
         } catch (err) {
             console.log("Error when logging!", err);
